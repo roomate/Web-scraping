@@ -1,14 +1,11 @@
 import urllib.request
 from html.parser import HTMLParser
-import re
 import os
 import logging
 from urllib.parse import urljoin
 import io
 
 import tarfile
-
-from tarfile import TarInfo
 
 from concurrent.futures import ThreadPoolExecutor
 import requests
