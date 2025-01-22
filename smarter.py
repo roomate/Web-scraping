@@ -8,6 +8,8 @@ import io
 
 import tarfile
 
+from tarfile import TarInfo
+
 from concurrent.futures import ThreadPoolExecutor
 import requests
 
@@ -59,9 +61,7 @@ def main(timeout: int):
         with tarfile.open(fileobj=tar_io, mode="r:gz") as archive:
             for xml_info in filter(lambda arc: arc.name.endswith(".xml"), archive):
                 logger.info(f"XML file {xml_info.name} found, extracting file...")
-
-                archive.extractall(xml_info.name) #Extract file and 
-
+                # archive.extract(xml_info.name) #Extract only XML file from archive
                 logger.info(f"Extraction of {xml_info.name} is done.")
 
     logger.info("The extraction is finished.")
