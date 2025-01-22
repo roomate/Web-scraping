@@ -15,7 +15,7 @@ def download_file(url):
     Fetch data from the url via requests method.
     """
     response = requests.get(url)
-    filename = url.split("/")[-1]
+    filename = url.split("/")[0] #Same thing as os.dirname(url)
     with open(filename, mode="wb") as file:
         file.write(response.content) #Save the file within the cwd
     logger.info(f"Downloaded file {filename}")
