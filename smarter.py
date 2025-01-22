@@ -61,7 +61,7 @@ def main(timeout: int):
         with tarfile.open(fileobj=tar_io, mode="r:gz") as archive:
             for xml_info in filter(lambda arc: arc.name.endswith(".xml"), archive):
                 logger.info(f"XML file {xml_info.name} found, extracting file...")
-                # archive.extract(xml_info.name) #Extract only XML file from archive
+                archive.extract(xml_info.name) #Extract only XML file from archive
                 logger.info(f"Extraction of {xml_info.name} is done.")
 
     logger.info("The extraction is finished.")
