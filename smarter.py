@@ -29,7 +29,7 @@ def scrap_archive_path(url, timeout: int):
     resp = requests.get(url = url, timeout = timeout)
 
     parser = MyHTMLParser()
-    parser.feed(resp.content.decode('utf-8'))
+    parser.feed(resp.content.decode('utf-8')) #Parse te HTML page
     parser.close()
     return filter(lambda url: url.endswith(".tar.gz"), parser.data) #Return an iterator
 
@@ -44,7 +44,7 @@ def main(timeout: int):
 
     for archive_name in scrap_archive_path(url, timeout):
         if not archive_name.startswith("CASS_"):
-            logger.info(f"Skipping {path_archive}, it does not start with 'CASS_'.")
+            logger.info(f"Skipping {archive_name}, it does not start with 'CASS_'.")
             continue
 
         logger.info(f"Downloading archive {archive_name}...")
