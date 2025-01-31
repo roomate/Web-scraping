@@ -4,6 +4,8 @@ import os
 import logging
 from urllib.parse import urljoin
 import io
+import typing
+from typing import Optional
 
 import tarfile
 
@@ -33,7 +35,7 @@ def scrap_archive_path(url, timeout: int):
     parser.close()
     return filter(lambda url: url.endswith(".tar.gz"), parser.data) #Return an iterator
 
-def main(timeout: int):
+def main(timeout: Optional[int]):
 
     logger=logging.getLogger(__name__)
     logging.basicConfig(filename = 'stdout.log', level=logging.INFO)
@@ -64,4 +66,4 @@ def main(timeout: int):
     logger.info("The extraction is finished.")
 
 if __name__ == '__main__':
-    main(None)
+	main(None)
